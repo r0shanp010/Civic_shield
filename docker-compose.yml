@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # -------------------------------------------------------------------
+  # CivicShield FastAPI Backend + AI NLP Classification Engine
+  # -------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: civicshield_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=CivicShield AI-Based Grievance Management System
+      - SECRET_KEY=civicshield_super_secure_production_secret_key_2026_jwt
+      - ACCESS_TOKEN_EXPIRE_MINUTES=1440
+      - UPLOAD_DIR=uploads
+      - MAX_UPLOAD_SIZE_MB=10
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_db:/app
+    networks:
+      - civicshield_net
+
+  # -------------------------------------------------------------------
+  # CivicShield React Frontend (Nginx Production Server)
+  # -------------------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: civicshield_frontend
+    restart: always
+    ports:
+      - "80:80"
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - civicshield_net
+
+volumes:
+  backend_uploads:
+    driver: local
+  backend_db:
+    driver: local
+
+networks:
+  civicshield_net:
+    driver: bridge

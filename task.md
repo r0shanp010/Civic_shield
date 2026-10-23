@@ -1,0 +1,27 @@
+# CivicShield Project Tasks
+
+- `[x]` 1. Initialize project directories and configure dependencies
+- `[x]` 2. Develop FastAPI Backend Foundation
+    - `[x]` Define database models and SQLAlchemy setup (SQLite + MySQL dual support)
+    - `[x]` Design Pydantic validation schemas (with UserRegister and CitizenRegister)
+    - `[x]` Implement secure JWT authentication & password hashing (Direct Bcrypt)
+    - `[x]` Build public complaint endpoints (with optional logged-in citizen tracking)
+    - `[x]` Build secure admin endpoints (dashboard aggregation, details, status update, assign, audit logs)
+- `[x]` 3. Implement Modular AI/NLP Service
+    - `[x]` Build text preprocessing pipeline
+    - `[x]` Code modular classifiers (category, priority, department) with heuristic fallbacks
+    - `[x]` Implement TF-IDF + Cosine Similarity duplicate checking
+    - `[x]` Build suspicious behavior/anomaly detection (spam/metadata cluster flags)
+    - `[x]` Create synthetic training dataset and trainer script
+- `[x]` 4. Build React Frontend (Vite)
+    - `[x]` Initialize React project in `frontend/`
+    - `[x]` Write custom CSS design system with a clean slate/navy government-style layout
+    - `[x]` Implement Citizen Home Page, Submit Page (4-step wizard), and Track Page
+    - `[x]` Implement Citizen Login (`UserLogin.jsx`), Register (`UserRegister.jsx`), and Dashboard (`UserDashboard.jsx`)
+    - `[x]` Implement Admin Login, Register (`AdminRegister.jsx`), Dashboard Page (Integrity Command Center), and Complaint Details Page
+- `[x]` 5. Full-Stack Integration & Testing
+    - `[x]` Seed default admin accounts and initial synthetic records
+    - `[x]` Run manual walkthroughs and verify timeline, file uploads, and status flows
+    - `[x]` Create automated API verification script (12 integration tests passing)
+- `[x]` 6. Final Walkthrough Document
+    - `[x]` Generate `walkthrough.md` with details of components, configurations, and verification steps
